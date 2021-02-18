@@ -3,8 +3,6 @@ const path = require('path');
 const clc = require('cli-color');
 const morgan = require('morgan');
 const cors = require('cors');
-require('./db/db');
-
 require('dotenv').config();
 
 class Server {
@@ -38,6 +36,7 @@ class Server {
     });
 
     // ROUTES
+    this.app.use('/api/user', require('./routes/user'));
 
     this.app.use(
       express.static(path.resolve(__dirname, '../../react-app/build'))
@@ -62,7 +61,5 @@ class Server {
     });
   }
 }
-
-module.exports = Server;
 
 new Server().execute();
