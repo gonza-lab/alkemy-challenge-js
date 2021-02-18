@@ -1,0 +1,40 @@
+{
+  "name": "alkemy-challenge",
+  "version": "1.0.0",
+  "description": "Challenge para Alkemy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-server": "nodemon ./server/app",
+    "dev-react": "cd react-app && npm start",
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gonza-lab/alkemy-challenge-js.git"
+  },
+  "keywords": [
+    "challenge"
+  ],
+  "author": "Gonzalo Flores",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gonza-lab/alkemy-challenge-js/issues"
+  },
+  "homepage": "https://github.com/gonza-lab/alkemy-challenge-js#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cli-color": "^2.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "joi": "^17.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0"
+  }
+}
