@@ -1,0 +1,30 @@
+.auth-button {
+  height: 44px;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: rgba(var(--primary-rgb), 1);
+  font-weight: 500;
+  font-size: 1rem;
+  color: white;
+  transition: 0.3s;
+
+  > a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:hover {
+    background-color: darken($color: rgba(0, 177, 234, 1), $amount: 10);
+  }
+}
+
+.auth-button__theme-white {
+  background-color: transparent;
+  color: rgba(var(--primary-rgb), 1);
+
+  &:hover {
+    background-color: rgba(65, 137, 230, 0.1);
+  }
+}

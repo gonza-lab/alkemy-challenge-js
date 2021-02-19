@@ -1,0 +1,66 @@
+.auth-input {
+  line-height: 1.35;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
+
+  > span {
+    font-size: 1em;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.45);
+    position: absolute;
+    bottom: 7px;
+    transform-origin: left 50% 0;
+    transition: 0.3s;
+  }
+
+  > .auth-input__writed {
+    bottom: 25px;
+    transform: scale(0.77778) translateY(-20%);
+  }
+
+  > input {
+    font-size: 18px;
+    height: 24px;
+    width: 100%;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.8);
+    line-height: normal;
+    background: transparent;
+    border: 0;
+    margin: 8px 0 5px;
+    // margin-bottom: 2px;
+    outline: none;
+    padding: 0;
+    transition: 0.3s;
+
+    &:hover,
+    &:focus {
+      border-color: black;
+    }
+  }
+
+  &:hover {
+    border-width: 2px;
+  }
+
+  > .error {
+    position: absolute;
+    font-size: 14px;
+    color: #f04449;
+    font-weight: 600;
+    bottom: -25px;
+    opacity: 0;
+    transition: 0.3s;
+    cursor: default;
+  }
+
+  > .show {
+    opacity: 1;
+  }
+}
+
+.auth-input__focus {
+  border-width: 2px;
+  border-color: rgba(var(--primary-rgb), 1);
+}
