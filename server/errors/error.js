@@ -74,6 +74,15 @@ class ExistingEmail extends Error {
   }
 }
 
+class AmountIsNotZero extends Error {
+  constructor(message) {
+    super();
+    Error.captureStackTrace(this, this.constructor);
+    this.statusCode = 404;
+    this.errorMessage = message || 'El monto no debe ser 0';
+  }
+}
+
 module.exports = {
   BadRequest,
   AlreadyExists,
@@ -84,4 +93,5 @@ module.exports = {
   InvalidCredentials,
   IncompleteData,
   ExistingEmail,
+  AmountIsNotZero
 };

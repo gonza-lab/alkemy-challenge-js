@@ -38,6 +38,7 @@ class Server {
     // ROUTES
     this.app.use('/api/user', require('./routes/user'));
     this.app.use('/api/category', require('./routes/category'));
+    this.app.use('/api/operation', require('./routes/operation'));
 
     this.app.use(
       express.static(path.resolve(__dirname, '../../react-app/build'))
