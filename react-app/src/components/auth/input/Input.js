@@ -6,6 +6,7 @@ export const AuthInput = ({
   componentRef,
   onChange,
   error,
+  className,
   ...props
 }) => {
   const [isWrite, setIsWrite] = useState(false);
@@ -22,7 +23,7 @@ export const AuthInput = ({
     <div
       onFocus={() => setIsFocus(true)}
       onBlur={() => setIsFocus(false)}
-      className={'auth-input' + (isFocus ? ' auth-input__focus' : '')}
+      className={'auth-input' + (isFocus ? ' auth-input__focus' : '') + (className ? ' ' + className : '')}
     >
       <span className={isWrite ? 'auth-input__writed' : ''}>{placeHolder}</span>
       <input ref={componentRef} onChange={handleChange} {...props} />

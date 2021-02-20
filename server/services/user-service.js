@@ -48,7 +48,12 @@ const log = async ({ email, password }) => {
   return { jwt: jwt.createOneHourJWT(jwtPayload), id: user.id };
 };
 
+const renew = (id) => {
+  return { jwt: jwt.createOneHourJWT({ id }), id };
+};
+
 module.exports = {
   register,
   log,
+  renew,
 };

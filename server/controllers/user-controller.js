@@ -44,4 +44,24 @@ const log = async (req = request, res = response) => {
   res.status(code).json(resContent);
 };
 
-module.exports = { register, log };
+const renew = async (req = request, res = response) => {
+  let code = 200;
+  let resContent = { ok: true };
+  const { id } = req.user;
+
+  try {
+    resContent = { ...resContent, ...user_service.renew(id) };
+  } catch (error) {
+    code = error.statusCode || 500;
+    resContent = {
+      ok: false,
+      error:
+        error.errorMessage ||
+        'Ha ocurrido un error. Hable con el administrador',
+    };
+  }
+
+  res.status(code).json(resContent);
+};
+
+module.exports = { register, log, renew };

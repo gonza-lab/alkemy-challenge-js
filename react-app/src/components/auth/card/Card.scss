@@ -2,21 +2,29 @@
   box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.15);
   border-radius: 6px;
   background-color: white;
-  // margin: -6.875rem auto 0;
   max-width: 26.5rem;
-  // padding: 2rem 4rem;
   width: 100%;
 
+  > form .each-slide,
+  > .auth-signup {
+    > h1 {
+      color: rgba(0, 0, 0, 0.8);
+      font-weight: 400;
+      letter-spacing: 0.0125rem;
+      overflow-wrap: break-word;
+      font-size: 1.5rem;
+    }
+  }
+
   > form {
+    > .loading {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 4rem;
+    }
     .each-slide {
       padding: 2rem 4rem;
-      > h1 {
-        color: rgba(0, 0, 0, 0.8);
-        font-weight: 400;
-        letter-spacing: 0.0125rem;
-        overflow-wrap: break-word;
-        font-size: 1.5rem;
-      }
+      outline: none;
 
       > * {
         margin: 10px 0;
@@ -24,6 +32,18 @@
 
       > .auth-input {
         margin: 50px 0;
+      }
+    }
+  }
+
+  > .auth-signup {
+    padding: 2rem 4rem;
+    display: grid;
+    row-gap: 30px;
+
+    > div:last-child {
+      > button {
+        margin-bottom: 10px;
       }
     }
   }
