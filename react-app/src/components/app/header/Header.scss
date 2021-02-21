@@ -1,0 +1,31 @@
+.app-header {
+  position: relative;
+  width: 100%;
+  height: 64px;
+  background-color: rgba(var(--primary-rgb), 1);
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.32);
+
+  > button {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    border-radius: 500px;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    font-size: 1.5rem;
+    color: white;
+    transition: 0.3s;
+    outline: none;
+
+    &:hover {
+      background-color: darken($color: rgb(0, 177, 234), $amount: 10);
+    }
+  }
+}

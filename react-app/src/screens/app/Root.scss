@@ -1,0 +1,31 @@
+.screens-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > .screens-app__container {
+    padding: 1.5em 2em;
+    max-width: 65.25em;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+    row-gap: 32px;
+
+    > .app-operation__container {
+      grid-row: 2 / 3;
+    }
+  }
+
+  @media (max-width: 768px) {
+    > .screens-app__container {
+      padding: 0;
+      grid-template-columns: 1fr;
+
+      > .app-operation__container {
+        grid-row: auto;
+      }
+    }
+  }
+}

@@ -8,4 +8,8 @@ const toggleRegistering = () => ({
   type: types.UI_TOGGLE_REGISTERING,
 });
 
-export default { toggleLogging, toggleRegistering };
+const toggleGetBalance = () => ({
+  type: types.UI_TOGGLE_GETTING_BALANCE,
+});
+
+export default { toggleLogging, toggleRegistering, toggleGetBalance };

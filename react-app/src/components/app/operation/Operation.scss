@@ -1,0 +1,12 @@
+.app-operation {
+  > .app-operation__title {
+    padding: 12px 16px;
+    border-bottom: 0.0625em solid #eee;
+    > h1 {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.28571;
+      margin: 0;
+    }
+  }
+}

@@ -9,6 +9,9 @@ export default (state = initialState, { type, payload }) => {
     case types.USER_LOGIN:
       return { ...state, ...payload, isLogged: true };
 
+    case types.USER_LOGOUT:
+      return initialState;
+
     default:
       return state;
   }

@@ -8,6 +8,10 @@ const login = ({ id }) => ({
   payload: { id },
 });
 
+const logout = () => ({
+  type: types.USER_LOGOUT,
+});
+
 const startLogin = (user) => {
   return async (dispatch) => {
     dispatch(ui.toggleLogging());
@@ -15,7 +19,13 @@ const startLogin = (user) => {
       const { data } = await axios.post('/api/user/login', user);
       localStorage.setItem('token', data.jwt);
       dispatch(login(data));
-    } catch ({ response }) {}
+    } catch ({ response }) {
+      if (response.status === 404) {
+        UiToast.fire({ title: 'Usuario no encontrado', icon: 'error' });
+      } else if (response.status === 401) {
+        UiToast.fire({ title: 'Contraseña incorrecta', icon: 'error' });
+      }
+    }
     dispatch(ui.toggleLogging());
   };
 };
@@ -35,4 +45,4 @@ const startSignUp = (user) => {
   };
 };
 
-export default { startLogin, login, startSignUp };
+export default { startLogin, login, startSignUp, logout };

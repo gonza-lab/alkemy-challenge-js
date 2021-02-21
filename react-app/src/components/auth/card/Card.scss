@@ -5,8 +5,18 @@
   max-width: 26.5rem;
   width: 100%;
 
-  > form .each-slide,
-  > .auth-signup {
+  > form {
+    padding: 2rem 4rem;
+    display: grid;
+    row-gap: 30px;
+
+    > .loading {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     > h1 {
       color: rgba(0, 0, 0, 0.8);
       font-weight: 400;
@@ -14,32 +24,6 @@
       overflow-wrap: break-word;
       font-size: 1.5rem;
     }
-  }
-
-  > form {
-    > .loading {
-      display: flex;
-      justify-content: center;
-      padding: 2rem 4rem;
-    }
-    .each-slide {
-      padding: 2rem 4rem;
-      outline: none;
-
-      > * {
-        margin: 10px 0;
-      }
-
-      > .auth-input {
-        margin: 50px 0;
-      }
-    }
-  }
-
-  > .auth-signup {
-    padding: 2rem 4rem;
-    display: grid;
-    row-gap: 30px;
 
     > div:last-child {
       > button {
@@ -52,9 +36,7 @@
     height: 100%;
 
     > form {
-      .each-slide {
-        padding: 2rem 1.5rem;
-      }
+      padding: 2rem 1.5rem;
     }
   }
 }

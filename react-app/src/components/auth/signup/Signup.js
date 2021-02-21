@@ -8,20 +8,6 @@ import { AuthButton } from '../button/Button';
 import { AuthCard } from '../card/Card';
 import { AuthInput } from '../input/Input';
 
-const ERRORS = {
-  email: {
-    required: 'Debe ingresar un email',
-    pattern: 'Debe ingresar un email valido',
-  },
-  password: {
-    required: 'Debe ingresar una contraseña',
-  },
-  repassword: {
-    required: 'Debe repetir la contraseña',
-    validatePass: 'Las contraseñas deben coincidir',
-  },
-};
-
 export const AuthSignup = () => {
   const { register, errors, watch, handleSubmit } = useForm();
   const dispatch = useDispatch();
@@ -52,9 +38,8 @@ export const AuthSignup = () => {
               })}
               name="email"
               autoComplete="off"
-              className="auth-signup__expand"
               placeHolder="Email"
-              error={ERRORS.email[errors.email?.type]}
+              error={errors}
             />
             <AuthInput
               componentRef={register({ required: true })}
@@ -62,7 +47,7 @@ export const AuthSignup = () => {
               type="password"
               autoComplete="off"
               placeHolder="Contraseña"
-              error={ERRORS.password[errors.password?.type]}
+              error={errors}
             />
             <AuthInput
               componentRef={register({
@@ -73,7 +58,7 @@ export const AuthSignup = () => {
               type="password"
               autoComplete="off"
               placeHolder="Repetí la contraseña porfavor"
-              error={ERRORS.repassword[errors.repassword?.type]}
+              error={errors}
             />
             <div>
               <AuthButton>Registrarse</AuthButton>
