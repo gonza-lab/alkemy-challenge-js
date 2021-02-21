@@ -1,8 +1,7 @@
-.auth-input {
+.ui-input {
   line-height: 1.35;
   position: relative;
   transition: 0.3s;
-
 
   > span {
     font-size: 1em;
@@ -52,7 +51,7 @@
     opacity: 1;
   }
 
-  > .auth-input__border {
+  > .ui-input__border {
     height: 1px;
     width: 100%;
     transition: 0.3s;
@@ -70,7 +69,7 @@
   }
 
   &:hover {
-    > .auth-input__border {
+    > .ui-input__border {
       > div {
         width: 100%;
       }
@@ -78,16 +77,16 @@
   }
 }
 
-.auth-input__writed {
+.ui-input__writed {
   > span {
     bottom: 25px;
     transform: scale(0.77778) translateY(-20%);
   }
 }
 
-.auth-input__focus,
-.auth-input__writed {
-  > .auth-input__border {
+.ui-input__focus,
+.ui-input__writed {
+  > .ui-input__border {
     > div {
       width: 100%;
       background-color: rgba(var(--primary-rgb), 1);

@@ -8,7 +8,10 @@ moment.locale('es');
 export const OperationItem = ({ item }) => {
   return (
     <div className="operation-item">
-      <div className="operation-item__concept">{item.concept}</div>
+      <div className="operation-item__concept">
+        <span>{item.concept}</span>
+        {Boolean(item.category) && <span>{item.category.name}</span>}
+      </div>
       <div className="operation-item__amount">
         <span>${item.amount}</span>
         <span>{moment(item.date).calendar()}</span>

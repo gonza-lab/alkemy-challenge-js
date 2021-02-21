@@ -4,9 +4,10 @@ import Loader from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import user from '../../../redux/user/actions';
+import { UiInput } from '../../ui/input/Input';
 import { AuthButton } from '../button/Button';
 import { AuthCard } from '../card/Card';
-import { AuthInput } from '../input/Input';
+import auth_errors from '../../../errors/auth';
 
 export const AuthSignup = () => {
   const { register, errors, watch, handleSubmit } = useForm();
@@ -31,7 +32,7 @@ export const AuthSignup = () => {
         ) : (
           <>
             <h1>Completa con tus datos</h1>
-            <AuthInput
+            <UiInput
               componentRef={register({
                 required: true,
                 pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
@@ -39,17 +40,17 @@ export const AuthSignup = () => {
               name="email"
               autoComplete="off"
               placeHolder="Email"
-              error={errors}
+              error={auth_errors.email[errors.email?.type]}
             />
-            <AuthInput
+            <UiInput
               componentRef={register({ required: true })}
               name="password"
               type="password"
               autoComplete="off"
               placeHolder="Contraseña"
-              error={errors}
+              error={auth_errors.password[errors.password?.type]}
             />
-            <AuthInput
+            <UiInput
               componentRef={register({
                 required: true,
                 validate: { validatePass },
@@ -58,7 +59,7 @@ export const AuthSignup = () => {
               type="password"
               autoComplete="off"
               placeHolder="Repetí la contraseña porfavor"
-              error={errors}
+              error={auth_errors.repassword[errors.repassword?.type]}
             />
             <div>
               <AuthButton>Registrarse</AuthButton>

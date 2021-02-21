@@ -18,6 +18,18 @@ const loadCategories = (payload) => ({
   payload,
 });
 
+const changeModeAdd = () => ({
+  type: types.OPERATION_CHANGE_MODE_ADD,
+});
+
+const changeModeSub = () => ({
+  type: types.OPERATION_CHANGE_MODE_SUBTRACT,
+});
+
+const changeModeOff = () => ({
+  type: types.OPERATION_CHANGE_MODE_OFF,
+});
+
 const getData = () => {
   return async (dispatch) => {
     dispatch(ui.toggleGetBalance());
@@ -45,4 +57,4 @@ const getData = () => {
   };
 };
 
-export default { getData };
+export default { getData, changeModeAdd, changeModeSub, changeModeOff };

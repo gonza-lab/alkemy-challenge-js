@@ -1,12 +1,13 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import user from '../../../redux/user/actions';
 import { AuthButton } from '../button/Button';
 import { AuthCard } from '../card/Card';
-import { AuthInput } from '../input/Input';
 import Loader from 'react-loader-spinner';
+import { UiInput } from '../../ui/input/Input';
+import auth_errors from '../../../errors/auth';
 
 export const AuthLogin = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -27,7 +28,7 @@ export const AuthLogin = () => {
         ) : (
           <>
             <h1>Ingresa tus datos :)</h1>
-            <AuthInput
+            <UiInput
               componentRef={register({
                 required: true,
                 pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
@@ -35,15 +36,15 @@ export const AuthLogin = () => {
               name="email"
               autoComplete="off"
               placeHolder="Email"
-              error={errors}
+              error={auth_errors.email[errors.email?.type]}
             />
-            <AuthInput
+            <UiInput
               componentRef={register({ required: true })}
               name="password"
               type="password"
               autoComplete="off"
               placeHolder="Contraseña"
-              error={errors}
+              error={auth_errors.password[errors.password?.type]}
             />
             <div>
               <AuthButton>Ingresar</AuthButton>

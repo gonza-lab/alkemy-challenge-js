@@ -1,0 +1,25 @@
+.ui-input-date {
+  > .DayPickerInput {
+    > input {
+      position: relative;
+      z-index: 1;
+      font-size: 18px;
+      height: 24px;
+      width: 100%;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.8);
+      line-height: normal;
+      background: transparent;
+      border: 0;
+      margin: 8px 0 5px;
+      outline: none;
+      padding: 0;
+      transition: 0.3s;
+
+      &:hover,
+      &:focus {
+        border-color: black;
+      }
+    }
+  }
+}

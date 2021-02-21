@@ -1,0 +1,26 @@
+.ui-input-select {
+  > select {
+    width: 100%;
+    border: none;
+    outline: none;
+    position: relative;
+    z-index: 1;
+    font-size: 18px;
+    height: 24px;
+    width: 100%;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.8);
+    line-height: normal;
+    background: transparent;
+    border: 0;
+    margin: 8px 0 5px;
+    outline: none;
+    padding: 0;
+    transition: 0.3s;
+
+    > option {
+      margin-left: -4px;
+      border-radius: 0.28571em;
+    }
+  }
+}
