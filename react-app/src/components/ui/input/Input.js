@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import useInputEffect from '../../../hooks/useInputEffect';
 import './Input.scss';
 
 export const UiInput = ({
@@ -7,26 +8,23 @@ export const UiInput = ({
   onChange,
   error,
   className,
+  value,
   ...props
 }) => {
-  const [isWrite, setIsWrite] = useState(false);
-  const [isFocus, setIsFocus] = useState(false);
+  const { isFocus, onBlur, onFocus } = useInputEffect();
 
   const handleChange = (e) => {
-    setIsWrite(Boolean(e.target.value));
-    if (onChange) {
-      onChange(e);
-    }
+    if (onChange) onChange(e);
   };
 
   return (
     <div
-      onFocus={() => setIsFocus(true)}
-      onBlur={() => setIsFocus(false)}
+      onFocus={onFocus}
+      onBlur={onBlur}
       className={
         'ui-input' +
         (isFocus ? ' ui-input__focus' : '') +
-        (isWrite ? ' ui-input__writed' : '') +
+        (value ? ' ui-input__writed' : '') +
         (className ? ' ' + className : '')
       }
     >

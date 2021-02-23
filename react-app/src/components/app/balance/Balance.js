@@ -11,9 +11,18 @@ export const AppBalance = () => {
   return (
     <div className="app-balance__container">
       <AppCard className="app-balance">
-        <div className="app-balance__info">
+        <div
+          className={
+            'app-balance__info' +
+            (balance === null ? ' app-balance__info-empty' : '')
+          }
+        >
           <div>Dinero disponible: </div>
-          <span>$ {balance}</span>
+          <span>
+            {balance === null
+              ? 'Al parecer no hay transacciones'
+              : `$ ${balance}`}
+          </span>
         </div>
         <div className="app-balance__actions">
           <button onClick={() => dispatch(operation.changeModeAdd())}>

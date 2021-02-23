@@ -16,15 +16,13 @@ export const ScreensAppRoot = () => {
     dispatch(operation.getData());
   }, []);
 
-  console.log(mode);
-
   return (
     <section id="balance" className="screens-app">
       <AppHeader />
       <div className="screens-app__container">
         <AppBalance />
         <Fade top collapse when={Boolean(mode)}>
-          {mode === 'add' ? <AppForm /> : <AppForm out />}
+          <AppForm />
         </Fade>
         <AppOperation title="Ingresos" />
         <AppOperation out title="Egresos" />

@@ -3,6 +3,14 @@ const error = require('../errors/error');
 const { Op } = require('sequelize');
 
 const create = async ({ amount, concept, date, categoryId, userId }) => {
+  if (typeof amount === 'string') {
+    amount = +amount;
+  }
+
+  if (typeof categoryId === 'string') {
+    categoryId = +categoryId;
+  }
+
   if (categoryId) {
     const category = await db.Category.findOne({ where: { id: categoryId } });
 

@@ -40,6 +40,7 @@ export const AuthSignup = () => {
               name="email"
               autoComplete="off"
               placeHolder="Email"
+              value={watch('email')}
               error={auth_errors.email[errors.email?.type]}
             />
             <UiInput
@@ -48,6 +49,7 @@ export const AuthSignup = () => {
               type="password"
               autoComplete="off"
               placeHolder="Contraseña"
+              value={watch('password')}
               error={auth_errors.password[errors.password?.type]}
             />
             <UiInput
@@ -59,6 +61,7 @@ export const AuthSignup = () => {
               type="password"
               autoComplete="off"
               placeHolder="Repetí la contraseña porfavor"
+              value={watch('repassword')}
               error={auth_errors.repassword[errors.repassword?.type]}
             />
             <div>

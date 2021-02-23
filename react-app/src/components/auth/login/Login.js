@@ -10,7 +10,7 @@ import { UiInput } from '../../ui/input/Input';
 import auth_errors from '../../../errors/auth';
 
 export const AuthLogin = () => {
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, watch } = useForm();
   const dispatch = useDispatch();
   const { isLogging } = useSelector((state) => state.ui);
 
@@ -36,6 +36,7 @@ export const AuthLogin = () => {
               name="email"
               autoComplete="off"
               placeHolder="Email"
+              value={watch('email')}
               error={auth_errors.email[errors.email?.type]}
             />
             <UiInput
@@ -44,6 +45,7 @@ export const AuthLogin = () => {
               type="password"
               autoComplete="off"
               placeHolder="Contraseña"
+              value={watch('password')}
               error={auth_errors.password[errors.password?.type]}
             />
             <div>

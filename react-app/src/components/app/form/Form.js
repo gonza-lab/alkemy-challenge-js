@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import operation from '../../../redux/operation/actions';
 import { UiInput } from '../../ui/input/Input';
 import { AppCard } from '../card/Card';
@@ -10,22 +10,47 @@ import { UiInputSelect } from '../../ui/input/InputSelect';
 import { UiButton } from '../../ui/button/Button';
 import './Form.scss';
 
-export const AppForm = ({ out }) => {
-  const { register, errors, control, watch, handleSubmit } = useForm();
+const text = {
+  add: {
+    title: 'Nuevo ingreso',
+    button: 'Añadir',
+  },
+  sub: {
+    title: 'Nuevo egreso',
+    button: 'Retirar',
+  },
+};
+
+const defaultValues = {
+  concept: '',
+  amount: '',
+  date: '',
+  categoryId: '',
+};
+
+export const AppForm = () => {
+  const { register, errors, control, handleSubmit, reset, watch } = useForm();
+  const { mode, categories } = useSelector((state) => state.operation);
   const dispatch = useDispatch();
+
+  const onSubmit = (data) => {
+    dispatch(operation.startMakeOperation(data));
+    reset(defaultValues);
+  };
 
   return (
     <AppCard className="app-form">
       <div className="app-form__title">
-        <h1>{out ? 'Nuevo egreso' : 'Nuevo ingreso'}</h1>
+        <h1>{text[mode]?.title}</h1>
       </div>
-      <form onSubmit={handleSubmit((data) => console.log(data))}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <UiInput
           className="app-form__expand"
           placeHolder="Concepto"
           componentRef={register({ required: true })}
           name="concept"
           autoComplete="off"
+          value={watch('concept')}
           error={operation_errors.concept[errors.concept?.type]}
         />
         <UiInput
@@ -34,6 +59,7 @@ export const AppForm = ({ out }) => {
           componentRef={register({ required: true })}
           name="amount"
           autoComplete="off"
+          value={watch('amount')}
           error={operation_errors.amount[errors.amount?.type]}
         />
         <UiInputDate
@@ -42,6 +68,7 @@ export const AppForm = ({ out }) => {
           name="date"
           control={control}
           defaultValue=""
+          value={watch('date')}
           error={operation_errors.date[errors.date?.type]}
         />
         <UiInputSelect
@@ -49,15 +76,23 @@ export const AppForm = ({ out }) => {
           placeHolder="Categoria"
           componentRef={register()}
           name="categoryId"
+          value={watch('categoryId')}
         >
           <option value=""></option>
-          <option value="categoria1">Categoria 1</option>
-          <option value="categoria2">Categoria 2</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
         </UiInputSelect>
-        <UiButton type="button" white onClick={() => dispatch(operation.changeModeOff())}>
+        <UiButton
+          type="button"
+          white
+          onClick={() => dispatch(operation.changeModeOff())}
+        >
           Cancelar
         </UiButton>
-        <UiButton>{out ? 'Retirar' : 'Ingresar'}</UiButton>
+        <UiButton>{text[mode]?.button}</UiButton>
       </form>
     </AppCard>
   );

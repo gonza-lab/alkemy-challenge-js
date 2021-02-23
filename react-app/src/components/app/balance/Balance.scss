@@ -12,6 +12,15 @@
     }
   }
 
+  > .app-balance__info-empty {
+    > span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 300;
+    }
+  }
+
   > .app-balance__actions {
     display: flex;
     padding: 16px;

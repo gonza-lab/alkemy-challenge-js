@@ -27,6 +27,16 @@ export default (state = initialState, { type, payload }) => {
     case types.OPERATION_CHANGE_MODE_OFF:
       return { ...state, mode: '' };
 
+    case types.OPERATION_MAKE_OPERATION:
+      return {
+        ...state,
+        list: [...state.list, payload],
+        balance:
+          state.balance === null
+            ? payload.amount
+            : state.balance + payload.amount,
+      };
+
     default:
       return state;
   }

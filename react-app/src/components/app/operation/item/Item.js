@@ -10,7 +10,11 @@ export const OperationItem = ({ item }) => {
     <div className="operation-item">
       <div className="operation-item__concept">
         <span>{item.concept}</span>
-        {Boolean(item.category) && <span>{item.category.name}</span>}
+        {Boolean(item.category) && (
+          <span className="operation-item__concept-category">
+            {item.category.name}
+          </span>
+        )}
       </div>
       <div className="operation-item__amount">
         <span>${item.amount}</span>

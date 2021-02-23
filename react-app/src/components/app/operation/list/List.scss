@@ -1,0 +1,10 @@
+.operation-list {
+  min-height: 48px;
+}
+
+.operation-list__empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+}

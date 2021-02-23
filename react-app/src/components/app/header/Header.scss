@@ -28,4 +28,8 @@
       background-color: darken($color: rgb(0, 177, 234), $amount: 10);
     }
   }
+
+  @media (max-width: 1024px) {
+    height: 60px;
+  }
 }

@@ -1,15 +1,15 @@
 const joi = require('joi');
 
 const create = joi.object({
-  amount: joi.string().required(),
-  categoryId: joi.string(),
+  amount: joi.number().required(),
+  categoryId: joi.number(),
   concept: joi.string().required(),
   date: joi.date().required(),
 });
 
 const update = joi.object({
-  amount: joi.string(),
-  categoryId: joi.string(),
+  amount: joi.number(),
+  categoryId: joi.number(),
   concept: joi.string(),
   date: joi.date(),
 });

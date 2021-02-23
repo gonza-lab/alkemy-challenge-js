@@ -12,4 +12,13 @@ const toggleGetBalance = () => ({
   type: types.UI_TOGGLE_GETTING_BALANCE,
 });
 
-export default { toggleLogging, toggleRegistering, toggleGetBalance };
+const toggleAddingOperation = () => ({
+  type: types.UI_TOGGLE_ADDING_OPERATION,
+});
+
+export default {
+  toggleLogging,
+  toggleRegistering,
+  toggleGetBalance,
+  toggleAddingOperation,
+};
