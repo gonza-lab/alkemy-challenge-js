@@ -23,4 +23,4 @@ La aplicación estara corriendo en el puerto 5000.
 
 ## Documentacion
 
-La documentación del backend se encuentra [aqui](./docs/backend.md)
+La documentación del backend se encuentra [aqui](https://documenter.getpostman.com/view/12704967/TWDamFRT)
