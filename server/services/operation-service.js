@@ -53,11 +53,15 @@ const update = async (newOperation, operationId, userId) => {
   }
 
   if (newOperation.categoryId) {
+    console.log('object');
     const category = await db.Category.findOne({
       where: { id: newOperation.categoryId },
     });
 
     if (!category) throw new error.NotFound();
+  }
+  if (newOperation.categoryId === '') {
+    newOperation.categoryId === null;
   }
 
   if (newOperation.amount) {
@@ -74,7 +78,15 @@ const update = async (newOperation, operationId, userId) => {
     }
   }
 
-  await db.Operation.update(newOperation, where);
+  await db.Operation.update(
+    {
+      ...newOperation,
+      categoryId:
+        newOperation.categoryId === '' ? null : newOperation.categoryId,
+    },
+    where
+  );
+  return (await db.Operation.findOne(where)).dataValues;
 };
 
 const remove = async (operationId, userId) => {

@@ -11,10 +11,11 @@ export const UiInputDate = ({
   error,
   className,
   value,
+  componentRef,
+  name,
   ...props
 }) => {
   const { isFocus, onBlur, onFocus } = useInputEffect();
-
   return (
     <div
       onFocus={onFocus}
@@ -30,9 +31,15 @@ export const UiInputDate = ({
       <Controller
         placeholder=""
         render={({ onChange, value }) => (
-          <DayPickerInput value={value} placeholder="" onDayChange={onChange} />
+          <DayPickerInput
+            inputProps={{ name }}
+            placeholder=""
+            onDayChange={onChange}
+            value={value}
+          />
         )}
-        defaultValue=""
+        defaultValue="default"
+        name={name}
         rules={rules}
         {...props}
       />

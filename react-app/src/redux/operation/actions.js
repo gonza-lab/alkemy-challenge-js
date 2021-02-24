@@ -2,6 +2,7 @@ import axios from 'axios';
 import getHeaderToken from '../../helper/getHeaderToken';
 import types from '../types';
 import ui from '../ui/actions';
+import { UiToast } from '../../components/ui/toast/Toasj';
 
 const loadBalance = (payload) => ({
   type: types.OPERATION_LOAD_BALANCE,
@@ -30,8 +31,23 @@ const changeModeOff = () => ({
   type: types.OPERATION_CHANGE_MODE_OFF,
 });
 
+const changeModeUp = (payload) => ({
+  type: types.OPERATION_CHANGE_MODE_UP,
+  payload,
+});
+
 const makeOperation = (payload) => ({
   type: types.OPERATION_MAKE_OPERATION,
+  payload,
+});
+
+const removeOperation = (payload) => ({
+  type: types.OPERATION_REMOVE_OPERATION,
+  payload,
+});
+
+const updateOperation = (payload) => ({
+  type: types.OPERATION_UPDATE_OPERATION,
   payload,
 });
 
@@ -93,10 +109,58 @@ const startMakeOperation = ({ amount, categoryId, ...restOperation }) => {
   };
 };
 
+const startDeleteOperation = ({ id, amount }) => {
+  return async (dispatch) => {
+    const options = {
+      headers: getHeaderToken(),
+    };
+    console.log(amount);
+
+    dispatch(ui.toggleRemovingOperation());
+    try {
+      await axios.delete(`/api/operation/${id}`, options);
+      dispatch(removeOperation({ id, amount }));
+    } catch (error) {
+      console.log(error);
+    }
+    dispatch(ui.toggleRemovingOperation());
+  };
+};
+
+const startUpdateOperation = ({ id, ...newOperation }) => {
+  return async (dispatch) => {
+    const options = {
+      headers: getHeaderToken(),
+    };
+
+    dispatch(ui.toggleUpdatingOperation());
+    try {
+      const { data } = await axios.put(
+        `/api/operation/${id}`,
+        newOperation,
+        options
+      );
+      const { ok, ...operationUpdated } = data;
+
+      dispatch(updateOperation({ ...operationUpdated, id }));
+    } catch ({ response }) {
+      console.log(response);
+      if (response.status === 400) {
+        UiToast.fire('El monto no debe ser 0.', '', 'error');
+      }
+    }
+    dispatch(changeModeOff());
+    dispatch(ui.toggleUpdatingOperation());
+  };
+};
+
 export default {
   getData,
   changeModeAdd,
   changeModeSub,
+  changeModeUp,
   changeModeOff,
   startMakeOperation,
+  startDeleteOperation,
+  startUpdateOperation,
 };

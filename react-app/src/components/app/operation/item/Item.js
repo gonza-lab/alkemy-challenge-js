@@ -1,11 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
 import moment from 'moment';
+import operation from '../../../../redux/operation/actions';
 import 'moment/locale/es';
 import './Item.scss';
 moment.locale('es');
 
 export const OperationItem = ({ item }) => {
+  const dispatch = useDispatch();
   return (
     <div className="operation-item">
       <div className="operation-item__concept">
@@ -36,8 +39,14 @@ export const OperationItem = ({ item }) => {
           className="operation-item__tooltip-wrapper"
         >
           <div className="operation-item__tooltip">
-            <button>Editar</button>
-            <button>Eliminar</button>
+            <button
+              onClick={() => dispatch(operation.startDeleteOperation(item))}
+            >
+              Eliminar
+            </button>
+            <button onClick={() => dispatch(operation.changeModeUp(item))}>
+              Editar
+            </button>
           </div>
         </ReactTooltip>
       </div>

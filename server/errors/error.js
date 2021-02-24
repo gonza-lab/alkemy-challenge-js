@@ -78,7 +78,7 @@ class AmountIsNotZero extends Error {
   constructor(message) {
     super();
     Error.captureStackTrace(this, this.constructor);
-    this.statusCode = 404;
+    this.statusCode = 400;
     this.errorMessage = message || 'El monto no debe ser 0';
   }
 }

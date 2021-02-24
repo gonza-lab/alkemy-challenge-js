@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useInputEffect from '../../../hooks/useInputEffect';
 import './Input.scss';
 

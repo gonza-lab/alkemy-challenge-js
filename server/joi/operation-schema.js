@@ -9,7 +9,7 @@ const create = joi.object({
 
 const update = joi.object({
   amount: joi.number(),
-  categoryId: joi.number(),
+  categoryId: joi.string().allow(''),
   concept: joi.string(),
   date: joi.date(),
 });

@@ -51,8 +51,14 @@ const update = async (req = request, res = response) => {
   const { body } = req;
 
   try {
-    await operation_service.update(body, operationId, userId);
+    const newOperation = await operation_service.update(
+      body,
+      operationId,
+      userId
+    );
+    resContent = { ...resContent, ...newOperation };
   } catch (error) {
+    console.log(error)
     code = error.statusCode || 500;
     resContent = {
       ok: false,
@@ -94,7 +100,6 @@ const balance = async (req = request, res = response) => {
   try {
     const balance = await operation_service.getBalance(id);
     resContent = { ...resContent, balance };
-
   } catch (error) {
     code = error.statusCode || 500;
     resContent = {

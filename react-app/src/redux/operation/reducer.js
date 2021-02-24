@@ -5,6 +5,7 @@ const initialState = {
   list: [],
   categories: [],
   mode: '',
+  activeOperation: null,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -24,8 +25,11 @@ export default (state = initialState, { type, payload }) => {
     case types.OPERATION_CHANGE_MODE_SUBTRACT:
       return { ...state, mode: 'sub' };
 
+    case types.OPERATION_CHANGE_MODE_UP:
+      return { ...state, mode: 'up', activeOperation: payload };
+
     case types.OPERATION_CHANGE_MODE_OFF:
-      return { ...state, mode: '' };
+      return { ...state, mode: '', activeOperation: null };
 
     case types.OPERATION_MAKE_OPERATION:
       return {
@@ -35,6 +39,34 @@ export default (state = initialState, { type, payload }) => {
           state.balance === null
             ? payload.amount
             : state.balance + payload.amount,
+      };
+
+    case types.OPERATION_REMOVE_OPERATION:
+      return {
+        ...state,
+        list: state.list.reduce(
+          (acum, operation) =>
+            operation.id === payload.id ? acum : [...acum, operation],
+          []
+        ),
+        balance: state.balance - payload.amount,
+      };
+
+    case types.OPERATION_UPDATE_OPERATION:
+      let prevAmount = state.list.find(
+        (operation) => operation.id === payload.id
+      ).amount;
+      console.log(payload);
+      return {
+        ...state,
+        list: state.list.reduce(
+          (acum, operation) =>
+            operation.id === payload.id
+              ? [...acum, { ...operation, ...payload }]
+              : [...acum, operation],
+          []
+        ),
+        balance: state.balance - prevAmount + payload.amount,
       };
 
     default:

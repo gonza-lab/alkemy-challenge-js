@@ -4,6 +4,8 @@ const initialState = {
   isRegistering: false,
   isGettingBalance: false,
   isAddingOperation: false,
+  isRemovingOperation: false,
+  isUpdatingOperation: false,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -19,6 +21,12 @@ export default (state = initialState, { type, payload }) => {
 
     case types.UI_TOGGLE_ADDING_OPERATION:
       return { ...state, isAddingOperation: !state.isAddingOperation };
+
+    case types.UI_TOGGLE_REMOVING_OPERATION:
+      return { ...state, isRemovingOperation: !state.isRemovingOperation };
+
+    case types.UI_TOGGLE_UPDATING_OPERATION:
+      return { ...state, isUpdatingOperation: !state.isUpdatingOperation };
 
     default:
       return state;

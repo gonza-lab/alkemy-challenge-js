@@ -16,9 +16,19 @@ const toggleAddingOperation = () => ({
   type: types.UI_TOGGLE_ADDING_OPERATION,
 });
 
+const toggleRemovingOperation = () => ({
+  type: types.UI_TOGGLE_REMOVING_OPERATION,
+});
+
+const toggleUpdatingOperation = () => ({
+  type: types.UI_TOGGLE_UPDATING_OPERATION,
+});
+
 export default {
   toggleLogging,
   toggleRegistering,
   toggleGetBalance,
   toggleAddingOperation,
+  toggleRemovingOperation,
+  toggleUpdatingOperation,
 };
