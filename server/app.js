@@ -41,12 +41,12 @@ class Server {
     this.app.use('/api/operation', require('./routes/operation'));
 
     this.app.use(
-      express.static(path.resolve(__dirname, '../../react-app/build'))
+      express.static(path.resolve(__dirname, '../react-app/build'))
     );
 
     this.app.get('*', function (req, res) {
       res.sendFile(
-        path.resolve(__dirname, '../../react-app/build', 'index.html')
+        path.resolve(__dirname, '../react-app/build', 'index.html')
       );
     });
   }

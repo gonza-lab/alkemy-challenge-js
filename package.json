@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev-server": "nodemon ./server/app",
     "dev-react": "cd react-app && npm start",
-    "start": "node server"
+    "build": "cd react-app && npm run build",
+    "start": "node server/app.js"
   },
   "repository": {
     "type": "git",
